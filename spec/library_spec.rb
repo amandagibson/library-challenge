@@ -1,7 +1,8 @@
 require './lib/library.rb'
+require 'yaml'
 
 describe Library do
-    let(:person) {instance_double('Person', name: 'Amanda', checked_out_book: 'Clean Code')}
+    let(:person) {instance_double('Person', name: 'Amanda', checked_out_book: 'Clean Code', message: @collection[index][:available])}
 
     
     it 'have books in library' do
@@ -28,7 +29,7 @@ describe Library do
 # not passing here- undefined method or local variable for 'index'
         it 'gives an unavailable messge if already checked out' do
             expected_outcome = { message: 'Already checked out'}
-            @collection[index][:available] == false
+            @collection[:index][:available] == false
         end
     end
 
